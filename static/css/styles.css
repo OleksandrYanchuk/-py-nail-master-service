@@ -8,13 +8,18 @@ html {
 }
 
 .body-container {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Change height to min-height for better responsiveness */
 }
 
 .body-content {
-  position: absolute;
-  margin-top: 2%;
-  padding-right: 10%;  
+  max-width: 80%;
+  text-align: center;
+  margin: 2% auto; /* Use auto for vertical margin to center the content */
+  padding-right: 10%;
+  margin-left: 50px;
 }
 
 .search-form{

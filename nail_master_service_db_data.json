@@ -1,0 +1,1999 @@
+{
+    "type": "database",
+    "name": "db",
+    "objects": [
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_group",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_group\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"name\" varchar(150) NOT NULL UNIQUE)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_group_permissions",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_group_permissions\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"group_id\" integer NOT NULL REFERENCES \"auth_group\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"permission_id\" integer NOT NULL REFERENCES \"auth_permission\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "group_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_group\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "permission_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_permission\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_permission",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_permission\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"content_type_id\" integer NOT NULL REFERENCES \"django_content_type\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"codename\" varchar(100) NOT NULL, \"name\" varchar(255) NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "content_type_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"django_content_type\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "codename",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    1,
+                    "add_logentry",
+                    "Can add log entry"
+                ],
+                [
+                    2,
+                    1,
+                    "change_logentry",
+                    "Can change log entry"
+                ],
+                [
+                    3,
+                    1,
+                    "delete_logentry",
+                    "Can delete log entry"
+                ],
+                [
+                    4,
+                    1,
+                    "view_logentry",
+                    "Can view log entry"
+                ],
+                [
+                    5,
+                    2,
+                    "add_permission",
+                    "Can add permission"
+                ],
+                [
+                    6,
+                    2,
+                    "change_permission",
+                    "Can change permission"
+                ],
+                [
+                    7,
+                    2,
+                    "delete_permission",
+                    "Can delete permission"
+                ],
+                [
+                    8,
+                    2,
+                    "view_permission",
+                    "Can view permission"
+                ],
+                [
+                    9,
+                    3,
+                    "add_group",
+                    "Can add group"
+                ],
+                [
+                    10,
+                    3,
+                    "change_group",
+                    "Can change group"
+                ],
+                [
+                    11,
+                    3,
+                    "delete_group",
+                    "Can delete group"
+                ],
+                [
+                    12,
+                    3,
+                    "view_group",
+                    "Can view group"
+                ],
+                [
+                    13,
+                    4,
+                    "add_contenttype",
+                    "Can add content type"
+                ],
+                [
+                    14,
+                    4,
+                    "change_contenttype",
+                    "Can change content type"
+                ],
+                [
+                    15,
+                    4,
+                    "delete_contenttype",
+                    "Can delete content type"
+                ],
+                [
+                    16,
+                    4,
+                    "view_contenttype",
+                    "Can view content type"
+                ],
+                [
+                    17,
+                    5,
+                    "add_session",
+                    "Can add session"
+                ],
+                [
+                    18,
+                    5,
+                    "change_session",
+                    "Can change session"
+                ],
+                [
+                    19,
+                    5,
+                    "delete_session",
+                    "Can delete session"
+                ],
+                [
+                    20,
+                    5,
+                    "view_session",
+                    "Can view session"
+                ],
+                [
+                    21,
+                    6,
+                    "add_user",
+                    "Can add user"
+                ],
+                [
+                    22,
+                    6,
+                    "change_user",
+                    "Can change user"
+                ],
+                [
+                    23,
+                    6,
+                    "delete_user",
+                    "Can delete user"
+                ],
+                [
+                    24,
+                    6,
+                    "view_user",
+                    "Can view user"
+                ],
+                [
+                    25,
+                    7,
+                    "add_services",
+                    "Can add services"
+                ],
+                [
+                    26,
+                    7,
+                    "change_services",
+                    "Can change services"
+                ],
+                [
+                    27,
+                    7,
+                    "delete_services",
+                    "Can delete services"
+                ],
+                [
+                    28,
+                    7,
+                    "view_services",
+                    "Can view services"
+                ],
+                [
+                    29,
+                    8,
+                    "add_customer",
+                    "Can add customer"
+                ],
+                [
+                    30,
+                    8,
+                    "change_customer",
+                    "Can change customer"
+                ],
+                [
+                    31,
+                    8,
+                    "delete_customer",
+                    "Can delete customer"
+                ],
+                [
+                    32,
+                    8,
+                    "view_customer",
+                    "Can view customer"
+                ],
+                [
+                    33,
+                    9,
+                    "add_master",
+                    "Can add master"
+                ],
+                [
+                    34,
+                    9,
+                    "change_master",
+                    "Can change master"
+                ],
+                [
+                    35,
+                    9,
+                    "delete_master",
+                    "Can delete master"
+                ],
+                [
+                    36,
+                    9,
+                    "view_master",
+                    "Can view master"
+                ],
+                [
+                    37,
+                    9,
+                    "view_own_master",
+                    "Can view own master"
+                ],
+                [
+                    38,
+                    9,
+                    "change_own_master",
+                    "Can change own master"
+                ],
+                [
+                    39,
+                    9,
+                    "change_service_price",
+                    "Can change service price"
+                ],
+                [
+                    40,
+                    10,
+                    "add_pricelist",
+                    "Can add price list"
+                ],
+                [
+                    41,
+                    10,
+                    "change_pricelist",
+                    "Can change price list"
+                ],
+                [
+                    42,
+                    10,
+                    "delete_pricelist",
+                    "Can delete price list"
+                ],
+                [
+                    43,
+                    10,
+                    "view_pricelist",
+                    "Can view price list"
+                ],
+                [
+                    44,
+                    11,
+                    "add_events",
+                    "Can add events"
+                ],
+                [
+                    45,
+                    11,
+                    "change_events",
+                    "Can change events"
+                ],
+                [
+                    46,
+                    11,
+                    "delete_events",
+                    "Can delete events"
+                ],
+                [
+                    47,
+                    11,
+                    "view_events",
+                    "Can view events"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "django_admin_log",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"django_admin_log\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"object_id\" text NULL, \"object_repr\" varchar(200) NOT NULL, \"action_flag\" smallint unsigned NOT NULL CHECK (\"action_flag\" >= 0), \"change_message\" text NOT NULL, \"content_type_id\" integer NULL REFERENCES \"django_content_type\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"user_id\" bigint NOT NULL REFERENCES \"nail_service_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"action_time\" datetime NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "object_id",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "object_repr",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "action_flag",
+                    "type": "smallint unsigned",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "CHECK",
+                            "definition": "CHECK (\"action_flag\" >= 0)"
+                        }
+                    ]
+                },
+                {
+                    "name": "change_message",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "content_type_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"django_content_type\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_user\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "action_time",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "django_content_type",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"django_content_type\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"app_label\" varchar(100) NOT NULL, \"model\" varchar(100) NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "app_label",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "model",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "admin",
+                    "logentry"
+                ],
+                [
+                    2,
+                    "auth",
+                    "permission"
+                ],
+                [
+                    3,
+                    "auth",
+                    "group"
+                ],
+                [
+                    4,
+                    "contenttypes",
+                    "contenttype"
+                ],
+                [
+                    5,
+                    "sessions",
+                    "session"
+                ],
+                [
+                    6,
+                    "nail_service",
+                    "user"
+                ],
+                [
+                    7,
+                    "nail_service",
+                    "services"
+                ],
+                [
+                    8,
+                    "nail_service",
+                    "customer"
+                ],
+                [
+                    9,
+                    "nail_service",
+                    "master"
+                ],
+                [
+                    10,
+                    "nail_service",
+                    "pricelist"
+                ],
+                [
+                    11,
+                    "nail_service",
+                    "events"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "django_migrations",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"django_migrations\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"app\" varchar(255) NOT NULL, \"name\" varchar(255) NOT NULL, \"applied\" datetime NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "app",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "applied",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "contenttypes",
+                    "0001_initial",
+                    "2023-06-20 11:30:26.343717"
+                ],
+                [
+                    2,
+                    "contenttypes",
+                    "0002_remove_content_type_name",
+                    "2023-06-20 11:30:26.374697"
+                ],
+                [
+                    3,
+                    "auth",
+                    "0001_initial",
+                    "2023-06-20 11:30:26.419344"
+                ],
+                [
+                    4,
+                    "auth",
+                    "0002_alter_permission_name_max_length",
+                    "2023-06-20 11:30:26.459320"
+                ],
+                [
+                    5,
+                    "auth",
+                    "0003_alter_user_email_max_length",
+                    "2023-06-20 11:30:26.495294"
+                ],
+                [
+                    6,
+                    "auth",
+                    "0004_alter_user_username_opts",
+                    "2023-06-20 11:30:26.515834"
+                ],
+                [
+                    7,
+                    "auth",
+                    "0005_alter_user_last_login_null",
+                    "2023-06-20 11:30:26.536820"
+                ],
+                [
+                    8,
+                    "auth",
+                    "0006_require_contenttypes_0002",
+                    "2023-06-20 11:30:26.558754"
+                ],
+                [
+                    9,
+                    "auth",
+                    "0007_alter_validators_add_error_messages",
+                    "2023-06-20 11:30:26.594732"
+                ],
+                [
+                    10,
+                    "auth",
+                    "0008_alter_user_username_max_length",
+                    "2023-06-20 11:30:26.627711"
+                ],
+                [
+                    11,
+                    "auth",
+                    "0009_alter_user_last_name_max_length",
+                    "2023-06-20 11:30:26.676683"
+                ],
+                [
+                    12,
+                    "auth",
+                    "0010_alter_group_name_max_length",
+                    "2023-06-20 11:30:26.811598"
+                ],
+                [
+                    13,
+                    "auth",
+                    "0011_update_proxy_permissions",
+                    "2023-06-20 11:30:26.840579"
+                ],
+                [
+                    14,
+                    "auth",
+                    "0012_alter_user_first_name_max_length",
+                    "2023-06-20 11:30:26.877557"
+                ],
+                [
+                    15,
+                    "nail_service",
+                    "0001_initial",
+                    "2023-06-20 11:30:27.132049"
+                ],
+                [
+                    16,
+                    "admin",
+                    "0001_initial",
+                    "2023-06-20 11:30:27.182469"
+                ],
+                [
+                    17,
+                    "admin",
+                    "0002_logentry_remove_auto_add",
+                    "2023-06-20 11:30:27.230451"
+                ],
+                [
+                    18,
+                    "admin",
+                    "0003_logentry_add_action_flag_choices",
+                    "2023-06-20 11:30:27.262476"
+                ],
+                [
+                    19,
+                    "sessions",
+                    "0001_initial",
+                    "2023-06-20 11:30:27.281537"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "django_session",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"django_session\" (\"session_key\" varchar(40) NOT NULL PRIMARY KEY, \"session_data\" text NOT NULL, \"expire_date\" datetime NOT NULL)",
+            "columns": [
+                {
+                    "name": "session_key",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY"
+                        }
+                    ]
+                },
+                {
+                    "name": "session_data",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "expire_date",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    "mrnhxjoxzj6lz68qe300hlg7e0ew86yr",
+                    ".eJxVjDsOwyAQRO9CHSHzW4PL9DkDWmAVyAdLxk4T5e7BkoukGY3mzcybedzW7LdGiy-JTUwodvoNA8Y71Z2kG9brzONc16UEvlf4QRu_zIke56P7d5Cx5b6GBDZETcGgxijAOopBaT2QUNaCdN13QaeEMUQDDWO0oCXgmBwY00_r9vSv0sra2CTt5wub6TyL:1qBbnJ:iOnMhSEMJxeATUypoX5-8qdSjel_MVqTaYD8OfTUUjM",
+                    "2023-07-04 13:53:17.739295"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_customer",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_customer\" (\"user_id\" bigint NOT NULL PRIMARY KEY REFERENCES \"nail_service_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "user_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_user\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    6
+                ],
+                [
+                    7
+                ],
+                [
+                    8
+                ],
+                [
+                    9
+                ],
+                [
+                    10
+                ],
+                [
+                    11
+                ],
+                [
+                    12
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_customer_masters",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_customer_masters\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"customer_id\" bigint NOT NULL REFERENCES \"nail_service_customer\" (\"user_id\") DEFERRABLE INITIALLY DEFERRED, \"master_id\" bigint NOT NULL REFERENCES \"nail_service_master\" (\"user_id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "customer_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_customer\" (\"user_id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "master_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_master\" (\"user_id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_customer_services",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_customer_services\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"customer_id\" bigint NOT NULL REFERENCES \"nail_service_customer\" (\"user_id\") DEFERRABLE INITIALLY DEFERRED, \"services_id\" bigint NOT NULL REFERENCES \"nail_service_services\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "customer_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_customer\" (\"user_id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "services_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_services\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_events",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_events\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"title\" varchar(255) NOT NULL, \"start_date\" datetime NOT NULL, \"end_date\" datetime NOT NULL, \"master_id\" bigint NOT NULL REFERENCES \"nail_service_master\" (\"user_id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "title",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "start_date",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "end_date",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "master_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_master\" (\"user_id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_master",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_master\" (\"user_id\" bigint NOT NULL PRIMARY KEY REFERENCES \"nail_service_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "user_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_user\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1
+                ],
+                [
+                    2
+                ],
+                [
+                    3
+                ],
+                [
+                    4
+                ],
+                [
+                    5
+                ],
+                [
+                    13
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_master_customers",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_master_customers\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"master_id\" bigint NOT NULL REFERENCES \"nail_service_master\" (\"user_id\") DEFERRABLE INITIALLY DEFERRED, \"customer_id\" bigint NOT NULL REFERENCES \"nail_service_customer\" (\"user_id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "master_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_master\" (\"user_id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "customer_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_customer\" (\"user_id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_pricelist",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_pricelist\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"price\" decimal NOT NULL, \"time_service\" time NULL, \"service_id\" bigint NOT NULL REFERENCES \"nail_service_services\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"master_id\" bigint NOT NULL REFERENCES \"nail_service_master\" (\"user_id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "price",
+                    "type": "decimal",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "time_service",
+                    "type": "time",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "service_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_services\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "master_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_master\" (\"user_id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    15,
+                    "01:00:00",
+                    2,
+                    13
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_services",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_services\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"name\" varchar(255) NOT NULL UNIQUE, \"price\" decimal NOT NULL, \"time_service\" time NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "price",
+                    "type": "decimal",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "time_service",
+                    "type": "time",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "Repair of one nail",
+                    10,
+                    "00:10:00"
+                ],
+                [
+                    2,
+                    "Design decor (1 nail)",
+                    15,
+                    "00:15:00"
+                ],
+                [
+                    3,
+                    "Nail polish by SomeManufacturer",
+                    150,
+                    "01:30:00"
+                ],
+                [
+                    4,
+                    "Women combined manicure",
+                    150,
+                    "01:40:00"
+                ],
+                [
+                    5,
+                    "Gel nail removing",
+                    50,
+                    "00:40:00"
+                ],
+                [
+                    6,
+                    "Hardware pedicure",
+                    200,
+                    "01:40:00"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_user",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_user\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"password\" varchar(128) NOT NULL, \"last_login\" datetime NULL, \"is_superuser\" bool NOT NULL, \"username\" varchar(150) NOT NULL UNIQUE, \"first_name\" varchar(150) NOT NULL, \"last_name\" varchar(150) NOT NULL, \"email\" varchar(254) NOT NULL, \"is_staff\" bool NOT NULL, \"is_active\" bool NOT NULL, \"date_joined\" datetime NOT NULL, \"role\" varchar(50) NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "password",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "last_login",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "is_superuser",
+                    "type": "bool",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "username",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "first_name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "last_name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "email",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "is_staff",
+                    "type": "bool",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "is_active",
+                    "type": "bool",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "date_joined",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "role",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "pbkdf2_sha256$600000$XrPF8LxrhQVAhpu67BgkEE$iSKXdIBQOD6ckPmW8BeP5B\/Ohs+Of44Oq8VGWPM6q+c=",
+                    null,
+                    0,
+                    "Test_master3",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 12:37:16.086053",
+                    "MASTER"
+                ],
+                [
+                    2,
+                    "pbkdf2_sha256$600000$1iyWxo38IGRVkh7zn3Hgkq$F6E8t0Fxtm+akf8y\/Y6\/A3QsxTxrf3DCtAP9g7wunLU=",
+                    null,
+                    0,
+                    "Test_master4",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 12:37:53.029021",
+                    "MASTER"
+                ],
+                [
+                    3,
+                    "pbkdf2_sha256$600000$Ku4Zjr3CyoriBc5uq5YT7K$TyDKb4EzYYIozkoIeR4cnPg73LyIpDAn4TZJLg4hG6A=",
+                    null,
+                    0,
+                    "Test_master6",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 12:57:51.658400",
+                    "MASTER"
+                ],
+                [
+                    4,
+                    "pbkdf2_sha256$600000$zipVq2GpD5ELa0ZX05yN4K$99QKYd3+nUwr8qwzUQ\/+SLWv\/i8Ux+f4kCOZ6hChDCc=",
+                    null,
+                    0,
+                    "Test_master7",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 12:58:34.770484",
+                    "MASTER"
+                ],
+                [
+                    5,
+                    "pbkdf2_sha256$600000$YAEtdthPGfpm5VxBkY9TYo$dcZkQwGC0gHSoBW1H+o8q1zsteehsOLKqAWp1aAaSsw=",
+                    null,
+                    0,
+                    "Test_master8",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:14:11.806418",
+                    "MASTER"
+                ],
+                [
+                    6,
+                    "pbkdf2_sha256$600000$OZoVpMzuJj3ogEAbILYRS5$XTgL+TLtHH58Upih6fbdJaZkGGPBz4IsFjiZdn1SHiE=",
+                    null,
+                    0,
+                    "test_customer3",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:14:30.357593",
+                    "CUSTOMER"
+                ],
+                [
+                    7,
+                    "pbkdf2_sha256$600000$PJqe3Mkuy27nQj5rDpdtBv$D4Skw\/pRN4KjdF0hLnRRPyNqwbXlhgc8ix6nJcpJgG8=",
+                    null,
+                    0,
+                    "test_customer4",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:15:01.334118",
+                    "CUSTOMER"
+                ],
+                [
+                    8,
+                    "pbkdf2_sha256$600000$PAnkbvOQmm4KvlfYWgomLy$ryYnz09a++VbGUG54chWTV1AEmJ7n7SCJvhlEiGKzIA=",
+                    null,
+                    0,
+                    "test_customer5",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:15:25.308618",
+                    "CUSTOMER"
+                ],
+                [
+                    9,
+                    "pbkdf2_sha256$600000$auDUq10DGe8mdSqG591JPq$eTr3dz5Q\/fbRJ9Awmx+MnTQBmaFC2GX4+h9MPxCV7fQ=",
+                    null,
+                    0,
+                    "test_customer6",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:15:42.915425",
+                    "CUSTOMER"
+                ],
+                [
+                    10,
+                    "pbkdf2_sha256$600000$TpT9djbH6v8mVqIPi8WQmp$CZUDZvyJFQoutIAPu8ataD\/jBLLXKYYoYzUpSjEdAHk=",
+                    null,
+                    0,
+                    "test_customer8",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:15:58.656200",
+                    "CUSTOMER"
+                ],
+                [
+                    11,
+                    "pbkdf2_sha256$600000$hYaEWvmUXpBrGX4d9yogBJ$L34s2tZ+TFhWETqef1gpFilOAdfG8c9Q\/nik3vzH7bM=",
+                    "2023-06-20 13:18:00.893926",
+                    0,
+                    "test_customer2",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:16:32.574052",
+                    "CUSTOMER"
+                ],
+                [
+                    12,
+                    "pbkdf2_sha256$600000$JBquU0nnY0dKWAACtQxSV9$j1nHRxuI5IZNAN2f7\/d5uXZdA0RXM2ZO6+P+y5aRUt4=",
+                    null,
+                    0,
+                    "test_customer",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:16:56.207198",
+                    "CUSTOMER"
+                ],
+                [
+                    13,
+                    "pbkdf2_sha256$600000$4OW2ZcAjsrtNqwnUKxBVZp$A1qcvD5SSSsFWFVRFu9dm1EKgSuTLmezO5Ut+6DJaTs=",
+                    "2023-06-20 13:18:27.235862",
+                    0,
+                    "Test_master",
+                    "Test_first",
+                    "Test_last",
+                    "",
+                    0,
+                    1,
+                    "2023-06-20 13:17:36.535192",
+                    "MASTER"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_user_groups",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_user_groups\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"user_id\" bigint NOT NULL REFERENCES \"nail_service_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"group_id\" integer NOT NULL REFERENCES \"auth_group\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_user\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "group_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_group\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "nail_service_user_user_permissions",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"nail_service_user_user_permissions\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"user_id\" bigint NOT NULL REFERENCES \"nail_service_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"permission_id\" integer NOT NULL REFERENCES \"auth_permission\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"nail_service_user\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "permission_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_permission\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_group_permissions_group_id_b120cbf9",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_group_permissions_group_id_b120cbf9\" ON \"auth_group_permissions\" (\"group_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_group_permissions_group_id_permission_id_0cd325b0_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"auth_group_permissions_group_id_permission_id_0cd325b0_uniq\" ON \"auth_group_permissions\" (\"group_id\", \"permission_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_group_permissions_permission_id_84c5c92e",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_group_permissions_permission_id_84c5c92e\" ON \"auth_group_permissions\" (\"permission_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_permission_content_type_id_2f476e4b",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_permission_content_type_id_2f476e4b\" ON \"auth_permission\" (\"content_type_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_permission_content_type_id_codename_01ab375a_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"auth_permission_content_type_id_codename_01ab375a_uniq\" ON \"auth_permission\" (\"content_type_id\", \"codename\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "django_admin_log_content_type_id_c4bce8eb",
+            "unique": false,
+            "ddl": "CREATE INDEX \"django_admin_log_content_type_id_c4bce8eb\" ON \"django_admin_log\" (\"content_type_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "django_admin_log_user_id_c564eba6",
+            "unique": false,
+            "ddl": "CREATE INDEX \"django_admin_log_user_id_c564eba6\" ON \"django_admin_log\" (\"user_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "django_content_type_app_label_model_76bd3d3b_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"django_content_type_app_label_model_76bd3d3b_uniq\" ON \"django_content_type\" (\"app_label\", \"model\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "django_session_expire_date_a5c62663",
+            "unique": false,
+            "ddl": "CREATE INDEX \"django_session_expire_date_a5c62663\" ON \"django_session\" (\"expire_date\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_customer_masters_customer_id_17243df3",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_customer_masters_customer_id_17243df3\" ON \"nail_service_customer_masters\" (\"customer_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_customer_masters_customer_id_master_id_23cafb0b_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"nail_service_customer_masters_customer_id_master_id_23cafb0b_uniq\" ON \"nail_service_customer_masters\" (\"customer_id\", \"master_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_customer_masters_master_id_480e4bf7",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_customer_masters_master_id_480e4bf7\" ON \"nail_service_customer_masters\" (\"master_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_customer_services_customer_id_dcadd4ba",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_customer_services_customer_id_dcadd4ba\" ON \"nail_service_customer_services\" (\"customer_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_customer_services_customer_id_services_id_0c65bc2e_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"nail_service_customer_services_customer_id_services_id_0c65bc2e_uniq\" ON \"nail_service_customer_services\" (\"customer_id\", \"services_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_customer_services_services_id_9a7bef4a",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_customer_services_services_id_9a7bef4a\" ON \"nail_service_customer_services\" (\"services_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_events_master_id_6e2c82e8",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_events_master_id_6e2c82e8\" ON \"nail_service_events\" (\"master_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_master_customers_customer_id_3fdc6193",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_master_customers_customer_id_3fdc6193\" ON \"nail_service_master_customers\" (\"customer_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_master_customers_master_id_36d21152",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_master_customers_master_id_36d21152\" ON \"nail_service_master_customers\" (\"master_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_master_customers_master_id_customer_id_0a6dd211_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"nail_service_master_customers_master_id_customer_id_0a6dd211_uniq\" ON \"nail_service_master_customers\" (\"master_id\", \"customer_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_pricelist_master_id_361c6ecc",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_pricelist_master_id_361c6ecc\" ON \"nail_service_pricelist\" (\"master_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_pricelist_service_id_af7d9a66",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_pricelist_service_id_af7d9a66\" ON \"nail_service_pricelist\" (\"service_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_user_groups_group_id_5ad626aa",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_user_groups_group_id_5ad626aa\" ON \"nail_service_user_groups\" (\"group_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_user_groups_user_id_1a9b1766",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_user_groups_user_id_1a9b1766\" ON \"nail_service_user_groups\" (\"user_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_user_groups_user_id_group_id_640a12a9_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"nail_service_user_groups_user_id_group_id_640a12a9_uniq\" ON \"nail_service_user_groups\" (\"user_id\", \"group_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_user_user_permissions_permission_id_1c1b3052",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_user_user_permissions_permission_id_1c1b3052\" ON \"nail_service_user_user_permissions\" (\"permission_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_user_user_permissions_user_id_82844278",
+            "unique": false,
+            "ddl": "CREATE INDEX \"nail_service_user_user_permissions_user_id_82844278\" ON \"nail_service_user_user_permissions\" (\"user_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "nail_service_user_user_permissions_user_id_permission_id_b5da0d07_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"nail_service_user_user_permissions_user_id_permission_id_b5da0d07_uniq\" ON \"nail_service_user_user_permissions\" (\"user_id\", \"permission_id\")"
+        }
+    ]
+}

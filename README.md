@@ -41,6 +41,20 @@ python manage.py runserver
 
 8. Open your web browser and go to http://localhost:8000 to access the application.
 
+## Setting up Environment Variables
+
+The Nail Master Service project uses environment variables to store sensitive information and configuration settings. To set up the required environment variables, follow these steps:
+
+1. Rename a file name '.env_sample' to `.env` in the project root directory.
+
+2. Make sure to replace `your_secret_key_value_here` with your actual secret key.
+
+3. Install the `python-dotenv` library by running the following command in your virtual environment:
+pip install python-dotenv
+
+Use the following command to load prepared data from fixture to test and debug your code:
+python manage.py loaddata nail_master_service_db_data.json
+
 
 Some Project Files
 
@@ -87,27 +101,3 @@ The views.py file contains the view functions and class-based views used in the 
 These views are responsible for handling various user interactions, displaying information, and providing the necessary forms for data input and modification.
  
 
-## Setting up Environment Variables
-
-The Nail Master Service project uses environment variables to store sensitive information and configuration settings. To set up the required environment variables, follow these steps:
-
-1. Create a new file named `.env` in the project root directory.
-
-2. Add the following environment variables to the `.env` file, with their corresponding values:
-
-DJANGO_SECRET_KEY=your_secret_key_value_here
-
-3. Make sure to replace `your_secret_key_value_here` with your actual secret key.
-
-4. Add `.env` to the `.gitignore` file to exclude it from version control.
-
-5. Install the `python-dotenv` library by running the following command in your virtual environment:
-pip install python-dotenv
-
-6. Open the `settings.py` file in the `nail_master_service` directory.
-
-7. Add the following lines at the top of the `settings.py` file, before other imports:
-```python
-import os
-from dotenv import load_dotenv
-load_dotenv()
