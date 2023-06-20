@@ -58,8 +58,8 @@ python manage.py loaddata nail_master_service_db_data.json
 
 #### Created users in fixture:
 
-##### masters: Test_master, Test_master3, Test_master4, Test_master6, Test_master7, Test_master8
+masters: Test_master, Test_master3, Test_master4, Test_master6, Test_master7, Test_master8
 
-##### customers: test_customer, test_customer2, test_customer3, test_customer4, test_customer5, test_customer6, test_customer8
+customers: test_customer, test_customer2, test_customer3, test_customer4, test_customer5, test_customer6, test_customer8
 
 ### IMPORTANT: pass for all users: b8396313
