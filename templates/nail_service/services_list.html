@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    Services List
+    <a href="{% url 'nail_service:services-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+
+  </h1>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <form action="" method="get" class="form-inline search-form">
+        <div class="form-group">
+          {{ search_form|crispy }}
+        </div>
+        <button class="btn btn-secondary" type="submit">🔍</button>
+      </form>
+    </div>
+  </div>
+
+  
+  {% if services_list %}
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Time_service</th>
+        <th>Update</th>
+        <th>Delete</th>
+
+      </tr>
+
+      {% for service in services_list %}
+        <tr>
+          <td>
+              {{ service.id }}
+          </td>
+          <td>
+              {{ service.name }}
+          </td>
+          <td>
+              {{ service.price }}
+          </td>
+          <td>
+              {{ service.time_service|time:"H:i" }}
+          </td>
+          <td>
+              <a href="{% url 'nail_service:services-update' pk=service.id %}">
+                Update
+              </a>
+          </td>
+          <td>
+              <a style="color: red"
+                href="{% url 'nail_service:services-delete' pk=service.id %}">
+                Delete
+              </a>
+          </td>
+
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no services in the service.</p>
+  {% endif %}
+</div>
+{% endblock %}

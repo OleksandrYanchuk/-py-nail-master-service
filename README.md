@@ -61,17 +61,29 @@ The models.py file contains the Django models used in the project. It defines th
 •	PriceList: Represents the price list for a specific master and service. It includes fields for the master, service, price, and time required for the service.
 
 views.py
+
 The views.py file contains the view functions and class-based views used in the Nail Master Service project. It defines the following views:
+
 •	index: This view function renders the home page and displays basic statistics about the application, such as the total number of users and visits.
+
 •	user_details: This view function redirects the user to their respective profile page based on their role (master or customer).
+
 •	master_required: This decorator function restricts access to views only for users with the role of "Master". It checks if the user is authenticated as a master and redirects them to the login page if not.
+
 •	MasterListView: This class-based view lists all the nail masters in the system. It includes a search form that allows users to filter masters by their username.
+
 •	MasterUpdateView: This class-based view allows a master to update their profile and associated services. It includes a form that allows the master to modify their details and update the prices for their services.
+
 •	MasterDetailView: This class-based view displays the detailed profile of a specific nail master. It also shows the events scheduled by that master.
+
 •	MasterCreateView: This class-based view allows the creation of a new nail master profile. It presents a form for the user to enter their information and create their profile.
+
 •	MasterDeleteView: This class-based view allows a master to delete their profile. It confirms the deletion and removes the master from the system.
+
 •	CustomerListView: This class-based view lists all the customers in the system. It includes a search form that enables users to filter customers by their username.
+
 •	CustomerUpdateView: This class-based view allows a customer to update their profile. It presents a form that allows the customer to modify their information.
+
 These views are responsible for handling various user interactions, displaying information, and providing the necessary forms for data input and modification.
  
 

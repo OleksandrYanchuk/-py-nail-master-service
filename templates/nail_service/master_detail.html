@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Username: {{ master.username }}
+    <a href="{% url 'nail_service:master-update' pk=master.id %}" class="btn btn-primary link-to-page">
+      Update Master
+    </a>
+    <a href="{% url 'nail_service:master-delete' pk=master.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+  </h1>
+
+  <p><strong>First name:</strong> {{ master.first_name }}</p>
+  <p><strong>Last name:</strong> {{ master.last_name }}</p>
+  <p><strong>Is staff:</strong> {{ master.is_staff }}</p>
+
+  <h2>Price List</h2>
+   <a href="{% url 'nail_service:price-list-create' pk=master.id %}" class="btn btn-primary link-to-page">
+      Update Price List
+    </a>
+
+  {% if master.pricelist_set.all%}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Time_service
+          <br>
+          (HH:MM)
+        </th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+  {% for item in master.pricelist_set.all %}
+
+    <tr>
+      <td>
+        {{ item.service.name }}
+      </td>
+      <td>
+        UAH {{ item.price }}
+      </td>
+      <td>
+        {{ item.time_service|time:"H:i" }}
+      </td>
+      <td>
+        <a href="{% url 'nail_service:price-list-update' pk=item.id %}">
+          Update
+        </a>
+      </td>
+      <td>
+        <a style="color: red"
+           href="{% url 'nail_service:price-list-delete' pk=item.id %}">
+          Delete
+        </a>
+      </td>
+    </tr>
+  {% empty %}
+    <p>No services in the price list.</p>
+  {% endfor %}
+      </table>
+{% endif %}
+
+
+<div id="calendar"></div>
+
+{% block scripts %}
+    {% include "nail_service/event_list.html" %}
+  {% endblock %}
+{% endblock %}
+
