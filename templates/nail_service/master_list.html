@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+<h1>All masters</h1>
+
+<form action="" method="get" class="form-inline search-form">
+  {{ search_form|crispy }}
+  <input class="btn btn-secondary" type="submit" value="🔍">
+</form>
+
+
+    {% if master_list %}
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+      </tr>
+    {% for master in master_list %}
+      <tr>
+        <td>{{ master.id }}</td>
+        <td><a href="{{ master.get_absolute_url }}">{{ master.username }} {% if user == master %} (Me){% endif %}</a></td>
+        <td>{{ master.first_name }}</td>
+        <td>{{ master.last_name }}</td>
+      </tr>
+    {% endfor %}
+
+    </table>
+    {% else %}
+      <p>There are no master in the service.</p>
+    {% endif %}
+{% endblock %}
