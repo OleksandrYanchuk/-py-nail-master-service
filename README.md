@@ -54,6 +54,9 @@ pip install python-dotenv
 
 Use the following command to load prepared data from fixture to test and debug your code:
 python manage.py loaddata nail_master_service_db_data.json
+masters: Test_master, Test_master3, Test_master4, Test_master6, Test_master7, Test_master8
+customers: test_customer, test_customer2, test_customer3, test_customer4, test_customer5, test_customer6, test_customer8
+pass for all users: b8396313
 
 
 Some Project Files
