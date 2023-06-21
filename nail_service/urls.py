@@ -6,7 +6,7 @@ from .views import (
     CustomerDetailView, CustomerCreateView, CustomerDeleteView, ServicesCreateView, ServicesUpdateView,
     ServicesDeleteView, MasterUpdateView, PriceListCreateView, PriceListUpdateView, PriceListDeleteView,
     CustomerUpdateView,
-)
+    )
 
 
 urlpatterns = [
@@ -57,6 +57,8 @@ urlpatterns = [
     path("master/<int:pk>/create_price_list/", PriceListCreateView.as_view(), name="price-list-create"),
     path("master/<int:pk>/update_price_list/", PriceListUpdateView.as_view(), name="price-list-update"),
     path("master/<int:pk>/delete_price_list/", PriceListDeleteView.as_view(), name="price-list-delete"),
+    path('subscribe/<int:pk>/', views.subscribe_to_master, name='subscribe'),
+    path('unsubscribe/<int:pk>/', views.unsubscribe_from_master, name='unsubscribe'),
 ]
 
 app_name = "nail_service"
