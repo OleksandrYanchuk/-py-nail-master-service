@@ -2,6 +2,9 @@
 
 This project was created to provide a platform for nail masters and customers to connect and schedule nail services. It allows nail masters to create their profiles, list their services and prices, and manage their schedule. Customers can search for nail masters, view their profiles, and book appointments for nail services.
 
+#### Check it out!
+[Nail Master Service deployed to Render!](https://nail-master-service.onrender.com)
+
 ## Setup and Local Installation
 
 ### To set up and run the project locally, follow these steps:
