@@ -54,15 +54,7 @@ The Nail Master Service project uses environment variables to store sensitive in
 
 #### 2. Make sure to replace `your_secret_key_value_here` with your actual secret key.
 
-#### 3. Install the `python-dotenv` library by running the following command in your virtual environment:
-```python
-pip install python-dotenv
-```
-## Use the following command to load prepared data from fixture to test code:
-```python
-python manage.py loaddata nail_master_service_db_data.json
-```
-#### Created users in fixture:
+## Created users in fixture:
 
 masters: Test_master, Test_master3, Test_master4, Test_master6, Test_master7, Test_master8
 
