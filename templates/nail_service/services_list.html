@@ -4,9 +4,13 @@
 {% block content %}
   <h1>
     Services List
+    {% if user.role != "CUSTOMER" %}
+
     <a href="{% url 'nail_service:services-create' %}" class="btn btn-primary link-to-page">
       Create
     </a>
+    {% endif %}
+
 
   </h1>
 
@@ -29,8 +33,12 @@
         <th>Name</th>
         <th>Price</th>
         <th>Time_service</th>
+        {% if user.role == "ADMIN" %}
+
         <th>Update</th>
         <th>Delete</th>
+        {% endif %}
+
 
       </tr>
 
@@ -48,6 +56,7 @@
           <td>
               {{ service.time_service|time:"H:i" }}
           </td>
+          {% if user.role == "ADMIN" %}
           <td>
               <a href="{% url 'nail_service:services-update' pk=service.id %}">
                 Update
@@ -59,6 +68,7 @@
                 Delete
               </a>
           </td>
+          {% endif %}
 
         </tr>
       {% endfor %}

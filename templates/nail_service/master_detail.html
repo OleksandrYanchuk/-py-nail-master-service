@@ -4,12 +4,14 @@
 {% block content %}
 <h1>
   Username: {{ master.username }}
+  {% if user == master.user %}
   <a href="{% url 'nail_service:master-update' pk=master.id %}" class="btn btn-primary link-to-page">
     Update Master
   </a>
   <a href="{% url 'nail_service:master-delete' pk=master.id %}" class="btn btn-danger link-to-page">
     Delete
   </a>
+  {% endif %}
   
 
 </h1>
@@ -19,9 +21,11 @@
 <p><strong>Is staff:</strong> {{ master.is_staff }}</p>
 
 <h2>Price List</h2>
+{% if user == master.user %}
 <a href="{% url 'nail_service:price-list-create' pk=master.id %}" class="btn btn-primary link-to-page">
   Update Price List
 </a>
+{% endif %}
 
 {% if master.pricelist_set.all%}
 <table>
@@ -32,8 +36,10 @@
       <br>
       (HH:MM)
     </th>
+    {% if user == master.user %}
     <th>Update</th>
     <th>Delete</th>
+    {% endif %}
   </tr>
 
   {% for item in master.pricelist_set.all %}
@@ -48,6 +54,7 @@
     <td>
       {{ item.time_service|time:"H:i" }}
     </td>
+    {% if user == master.user %}
     <td>
       <a href="{% url 'nail_service:price-list-update' pk=item.id %}">
         Update
@@ -58,6 +65,7 @@
         Delete
       </a>
     </td>
+    {% endif %}
   </tr>
   {% empty %}
   <p>No services in the price list.</p>
@@ -67,12 +75,15 @@
 <br>
 <h2>Customers</h2>
 
+{% if user.role == "CUSTOMER" %}
 <a href="{% url 'nail_service:subscribe' pk=master.id %}" class="btn btn-primary">
   Subscribe to this master
 </a>
 <a href="{% url 'nail_service:unsubscribe' pk=master.id %}" class="btn btn-danger">
   Unsubscribe from this master
 </a>
+{% endif %}
+
 
 <hr>
 <ul>
