@@ -3,12 +3,14 @@
 {% block content %}
   <h1>
     Username: {{ customer.username }}
+    {% if user == customer.user %}
     <a href="{% url 'nail_service:customer-update' pk=customer.id %}" class="btn btn-primary link-to-page">
       Update Customer
     </a>
     <a href="{% url 'nail_service:customer-delete' pk=customer.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>
+    {% endif %}
 
   </h1>
 

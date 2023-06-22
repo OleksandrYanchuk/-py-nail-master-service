@@ -20,12 +20,14 @@ from .models import User, Services, Master, Customer, Events, PriceList
 @login_required
 def index(request: HttpRequest) -> HttpResponse:
     """View function for the home page of the site."""
-    num_users: int = User.objects.count()
+    num_masters: int = Master.objects.count()
+    num_customers: int = Customer.objects.count()
     num_visits: int = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
 
     context = {
-        "num_drivers": num_users,
+        "num_masters": num_masters,
+        "num_customers": num_customers,
         "num_visits": num_visits + 1,
     }
 
@@ -47,13 +49,25 @@ def user_details(request) -> HttpResponseRedirect:
         return render(request, 'nail_service/index.html')
 
 
+def admin_required(view_func) -> callable:
+    """
+    Decorator function to check if the user has the 'Admin' role.
+    Raises PermissionDenied if the user does not have the required role.
+    """
+    def wrapper(request, *args, **kwargs) -> callable:
+        if request.user.role != User.Role.ADMIN:
+            raise PermissionDenied("You do not have permission to perform this action.")
+        return view_func(request, *args, **kwargs)
+    return wrapper
+
+
 def master_required(view_func) -> callable:
     """
     Decorator function to check if the user has the 'Master' role.
     Raises PermissionDenied if the user does not have the required role.
     """
     def wrapper(request, *args, **kwargs) -> callable:
-        if request.user.role != User.Role.MASTER:
+        if request.user.role != Role.MASTER:
             raise PermissionDenied("You do not have permission to perform this action.")
         return view_func(request, *args, **kwargs)
     return wrapper
@@ -364,8 +378,8 @@ class ServicesUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.Update
         Returns True if the user is a master and has a matching master object, False otherwise.
         """
         user = self.request.user
-        if user.role == User.Role.MASTER:
-            return user.master is not None and user.master == self.request.user.master
+        if user.role == "ADMIN":
+            return user is not None and user == self.request.user
         return False
 
     def handle_no_permission(self) -> HttpResponseForbidden:
@@ -388,8 +402,8 @@ class ServicesDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.Delete
         Returns True if the user is a master and has a matching master object, False otherwise.
         """
         user = self.request.user
-        if user.role == User.Role.MASTER:
-            return user.master is not None and user.master == self.request.user.master
+        if user.role == "ADMIN":
+            return user is not None and user == self.request.user
         return False
 
     def handle_no_permission(self) -> HttpResponseForbidden:
