@@ -6,7 +6,7 @@ from django.db.migrations import RunPython
 
 
 def func(apps, schema_editor):
-    call_command('loaddata', 'fixture_data.json')
+    call_command('loaddata', 'nail_master_service_db_data.json')
 
 
 def reverse_func(apps, schema_editor):
