@@ -9,7 +9,7 @@ This project was created to provide a platform for nail masters and customers to
 #### 1.  Clone the repository:
 
 ```python
-git clone <repository_url>
+git clone https://github.com/OleksandrYanchuk/py-nail-master-service.git
 ```
 #### 2. Create a virtual environment:
 ```python
