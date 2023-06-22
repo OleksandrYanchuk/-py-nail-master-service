@@ -67,7 +67,7 @@ def master_required(view_func) -> callable:
     Raises PermissionDenied if the user does not have the required role.
     """
     def wrapper(request, *args, **kwargs) -> callable:
-        if request.user.role != Role.MASTER:
+        if request.user.role != User.Role.MASTER:
             raise PermissionDenied("You do not have permission to perform this action.")
         return view_func(request, *args, **kwargs)
     return wrapper
@@ -499,12 +499,9 @@ class PriceListDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.Delet
         }))
 
 
-def all_events(request) -> JsonResponse:
-    """
-    Retrieves all events and returns a JSON response containing event details.
-    """
+def all_events(request):
     all_events = Events.objects.all()
-    out: List[Dict[str, Any]] = []
+    out = []
     for event in all_events:
         out.append({
             'title': event.title,
@@ -515,13 +512,8 @@ def all_events(request) -> JsonResponse:
 
     return JsonResponse(out, safe=False)
 
-
 @master_required
-def add_event(request) -> JsonResponse:
-    """
-    Adds a new event based on the provided parameters and the current user's master.
-    Returns a JSON response indicating the success of the operation.
-    """
+def add_event(request):
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
     title = request.GET.get("title", None)
@@ -535,16 +527,12 @@ def add_event(request) -> JsonResponse:
         event = Events(title=title, start_date=start_date, end_date=end_date, master=master)
         event.save()
 
-    data: Dict[str, Any] = {}
+    data = {}
     return JsonResponse(data)
 
 
 @master_required
-def update(request) -> JsonResponse:
-    """
-    Updates an existing event based on the provided parameters and the current user's master.
-    Returns a JSON response indicating the success of the operation.
-    """
+def update(request):
     id = request.GET.get("id", None)
     event = Events.objects.get(id=id)
     user = request.user
@@ -557,23 +545,19 @@ def update(request) -> JsonResponse:
         event.title = title
         event.save()
 
-    data: Dict[str, Any] = {}
+    data = {}
     return JsonResponse(data)
 
 
 @master_required
-def remove(request) -> JsonResponse:
-    """
-    Removes an existing event based on the provided event ID and the current user's master.
-    Returns a JSON response indicating the success of the operation.
-    """
+def remove(request):
     id = request.GET.get("id", None)
     event = Events.objects.get(id=id)
     user = request.user
     if user.role == User.Role.MASTER and event.master == user.master:
         event.delete()
 
-    data: Dict[str, Any] = {}
+    data = {}
     return JsonResponse(data)
 
 
