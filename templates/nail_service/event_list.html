@@ -30,7 +30,9 @@
                         };
                         calendar.fullCalendar('renderEvent', eventData);
                         alert("Added Successfully");
+                        calendar.fullCalendar(location.replace(location.href));
                     },
+
                     error: function (data) {
                         alert('There is a problem!!!');
                     }
@@ -51,6 +53,7 @@
                     calendar.fullCalendar('refetchEvents');
                     alert('Event Update');
                 },
+
                 error: function (data) {
                     alert('There is a problem!!!');
                 }
@@ -68,7 +71,7 @@
                 data: { 'title': title, 'start': start, 'end': end, 'id': id },
                 dataType: "json",
                 success: function (data) {
-                    calendar.fullCalendar('refetchEvents');
+
                     alert('Event Update');
                 },
                 error: function (data) {
@@ -89,6 +92,7 @@
                         calendar.fullCalendar('removeEvents', id);
                         alert('Event Removed');
                     },
+
                     error: function (data) {
                         alert('There is a problem!!!');
                     }
